@@ -12,7 +12,8 @@ export const BlogContextProvider = (props) => {
   // Function to change the page
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo(0, 30); // Scroll to the top of the page
+    // window.scrollTo(0, 30); // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   // Calculate the top favorites whenever 'posts' changes
   const topFavorites = useMemo(() => {
