@@ -18,6 +18,7 @@ import App from "./App";
 import { BlogContextProvider } from "./context/BlogContext ";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BlogSingle from "./pages/blog/BlogSingle";
+import AboutUs from "./pages/about/AboutUs";
 
 // import Layout from "./routes/layout";
 // import NotMatch from "./routes/not-match";
@@ -69,6 +70,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BlogContextProvider>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/rent" element={<AboutUs />} />
           <Route path="/post/:id" element={<BlogSingle />} />
         </Routes>
       </BlogContextProvider>
