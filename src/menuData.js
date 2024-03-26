@@ -1,5 +1,10 @@
 export default [
   {
+    label: "صفحه اصلی",
+    href: "/rent",
+  },
+  ,
+  {
     label: "پوشاک",
     href: "/rent",
 
