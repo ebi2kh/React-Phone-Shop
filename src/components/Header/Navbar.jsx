@@ -2,7 +2,7 @@ import React from "react";
 import SearchButton from "./SearchButton";
 import logo from "../../assets/image/logo.png";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import router from "../../routes/RoutesMenue";
+
 function Navbar() {
   return (
     <div>

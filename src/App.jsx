@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Footer from "./components/Footer";
 import Blog from "./pages/Blog";
 import SearchButton from "./components/Header/SearchButton";
-import router from "./routes/RoutesMenue";
+
 import Navbar from "./components/Header/Navbar";
 import React, { useState } from "react";
 import Payment from "./pages/payment/Payment";
@@ -18,6 +18,8 @@ import BlogAll from "./pages/blog/BlogAll";
 import Cart from "./pages/cart/Cart";
 import Category from "./pages/category/Category";
 import { Route } from "react-router-dom";
+
+import DropdownMenu from "./components/Header/DropdownMenu";
 export default function App() {
   return (
     <>
@@ -27,6 +29,7 @@ export default function App() {
       {/* <Category /> */}
       {/* <Cart /> */}
       {/* <Blog /> */}
+      <DropdownMenu />
       <BlogAll />
       <Footer />
     </>
