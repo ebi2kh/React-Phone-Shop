@@ -14,7 +14,7 @@ export default function SortOptions() {
   ];
 
   return (
-    <div>
+    <div className="flex flex-wrap gap-5 justify-start items-center">
       {sortOptions.map((option, index) => (
         <div
           key={index}

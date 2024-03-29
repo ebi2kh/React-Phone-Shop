@@ -6,11 +6,12 @@ export default function ColorFilter() {
   const { colors, selectedColors, handleColorSelect } = useContext(ShopContext);
 
   return (
-    <div>
+    <>
       {colors.map((color, index) => (
         <div
           key={index}
-          className={`flex items-center rounded-lg opacity-80 bg-${color.toLowerCase()} text-white`}
+          className={`flex items-center rounded-lg opacity-80 text-white`}
+          style={{ backgroundColor: `${color.toLowerCase()}` }}
         >
           <input
             id={`checkbox-color-${index}`}
@@ -28,6 +29,6 @@ export default function ColorFilter() {
           </label>
         </div>
       ))}
-    </div>
+    </>
   );
 }
