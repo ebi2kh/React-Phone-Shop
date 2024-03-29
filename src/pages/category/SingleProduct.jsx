@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext ";
+import { CartContext } from "../../context/CartContext";
+
 function SingleProduct() {
   const { id } = useParams();
   const { products } = useContext(ShopContext);
+  const { addToCart, cart } = useContext(CartContext);
   const product = products.find((product) => product.id === Number(id));
-  console.log(product);
+  console.log(cart);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="flex gap-x-2 px-10 mt-5 md:mt-10">
@@ -224,7 +227,10 @@ function SingleProduct() {
                       </div>
                     </div>
                     <span className="flex justify-center items-center opacity-90">
-                      <button className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">
+                      <button
+                        onClick={() => addToCart(product)}
+                        className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
+                      >
                         افزودن به سبد خرید
                       </button>
                     </span>
