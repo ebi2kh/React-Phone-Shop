@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { ShopContext } from "./ShopContext";
 
+import { ShopContext } from "../../context/ShopContext ";
 export default function SortOptions() {
-  const { state, dispatch } = useContext(ShopContext);
+  const { sortOption, setSortOption } = useContext(ShopContext);
 
   const sortOptions = [
     "محبوب ترین",
@@ -13,17 +13,13 @@ export default function SortOptions() {
     "پربازدیدترین",
   ];
 
-  const handleSortOptionSelect = (option) => {
-    dispatch({ type: "SET_SORT_OPTION", payload: option });
-  };
-
   return (
     <div>
       {sortOptions.map((option, index) => (
         <div
           key={index}
           className="opacity-70 text-xs hover:text-red-500 transition cursor-pointer text-red-600"
-          onClick={() => handleSortOptionSelect(option)}
+          onClick={() => setSortOption(option)}
         >
           {option}
         </div>

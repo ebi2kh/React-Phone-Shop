@@ -1,6 +1,6 @@
 import BrandFilter from "./BrandFilter";
-// import ColorFilter from "./ColorFilter";
-// import SortOptions from "./SortOptions";
+import ColorFilter from "./ColorFilter";
+import SortOptions from "./SortOptions";
 import ProductGrid from "./ProductGrid";
 
 export default function Shop() {
@@ -8,8 +8,8 @@ export default function Shop() {
     // <ShopProvider>
     <>
       <BrandFilter />
-      {/* <ColorFilter />
-      <SortOptions />  */}
+      <ColorFilter />
+      <SortOptions />
       <ProductGrid />
     </>
     // </ShopProvider>

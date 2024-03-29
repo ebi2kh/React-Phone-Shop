@@ -6,21 +6,54 @@ export function ShopProvider({ children }) {
   // Assuming your products data is stored in a state variable
   const [products, setProducts] = useState(data);
 
-  // Get unique brands
+  // Get unique brands and colors
   const brands = [...new Set(products.map((product) => product.brand))];
+  const colors = [...new Set(products.flatMap((product) => product.color))];
 
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [sortOption, setSortOption] = useState(null);
 
-  // Filter products based on selected brands
+  // Filter products based on selected brands and colors
   const [displayedProducts, setDisplayedProducts] = useState([]);
 
   useEffect(() => {
+    let sortedProducts = [...products];
+    switch (sortOption) {
+      case "محبوب ترین":
+        sortedProducts.sort((a, b) => b.favorite - a.favorite);
+        break;
+      case "پرفروش ترین":
+        sortedProducts.sort((a, b) => b.buyNumber - a.buyNumber);
+        break;
+      case "ارزان ترین":
+        sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "گران ترین":
+        sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      case "جدیدترین":
+        sortedProducts.sort((a, b) => b.date - a.date);
+        break;
+      case "پربازدیدترین":
+        sortedProducts.sort((a, b) => b.view - a.view);
+        break;
+      default:
+        break;
+    }
+
     setDisplayedProducts(
-      selectedBrands.length > 0
-        ? products.filter((product) => selectedBrands.includes(product.brand))
-        : products
+      sortedProducts.filter(
+        (product) =>
+          (selectedBrands.length > 0
+            ? selectedBrands.includes(product.brand)
+            : true) &&
+          (selectedColors.length > 0
+            ? product.color.some((color) => selectedColors.includes(color))
+            : true)
+      )
     );
-  }, [selectedBrands, products]);
+  }, [selectedBrands, selectedColors, sortOption, products]);
 
   const handleBrandSelect = (brand) => {
     if (selectedBrands.includes(brand)) {
@@ -30,9 +63,28 @@ export function ShopProvider({ children }) {
     }
   };
 
+  const handleColorSelect = (color) => {
+    if (selectedColors.includes(color)) {
+      setSelectedColors(selectedColors.filter((c) => c !== color));
+    } else {
+      setSelectedColors([...selectedColors, color]);
+    }
+  };
+
   return (
     <ShopContext.Provider
-      value={{ brands, selectedBrands, handleBrandSelect, displayedProducts }}
+      value={{
+        products,
+        brands,
+        colors,
+        selectedBrands,
+        selectedColors,
+        handleBrandSelect,
+        handleColorSelect,
+        displayedProducts,
+        sortOption,
+        setSortOption,
+      }}
     >
       {children}
     </ShopContext.Provider>
