@@ -20,7 +20,9 @@ import Category from "./pages/category/Category";
 import { Route } from "react-router-dom";
 import Shop from "./pages/category/Shop";
 import DropdownMenu from "./components/Header/DropdownMenu";
-
+import Login from "./pages/user/Login";
+import Checkout from "./pages/checkout/Checkout";
+import SingleProduct from "./pages/category/SingleProduct";
 export default function App() {
   return (
     <>
@@ -30,9 +32,12 @@ export default function App() {
       {/* <Cart /> */}
       {/* <Blog /> */}
       <DropdownMenu />
+      <SingleProduct />
       {/* <BlogAll /> */}
       {/* <Category /> */}
-      <Shop />
+      {/* <Checkout /> */}
+      {/* <Login /> */}
+      {/* <Shop /> */}
       <Footer />
     </>
   );
