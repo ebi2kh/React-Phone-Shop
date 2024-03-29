@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext ";
 import { CartContext } from "../../context/CartContext";
-
+import { Route, Link } from "react-router-dom";
 function SingleProduct() {
   const { id } = useParams();
   const { products } = useContext(ShopContext);
@@ -233,6 +233,12 @@ function SingleProduct() {
                       >
                         افزودن به سبد خرید
                       </button>
+                      <Link
+                        to={`/cart`}
+                        className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
+                      >
+                        cart
+                      </Link>
                     </span>
                   </div>
                 </div>

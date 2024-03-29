@@ -1,6 +1,7 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 function Checkout() {
+  const { cart } = useContext(CartContext);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="bg-white shadow-xl my-5 lg:my-10 rounded-xl md:rounded-2xl p-3 md:p-5">
@@ -92,102 +93,37 @@ function Checkout() {
             جزئیات محصولات
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 lg:px-16">
-            <span className="card swiper-slide my-2 p-2 md:p-3 ">
-              <div className="image-box mb-6 ">
-                <a href="">
-                  <img
-                    className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                    src="assets/image/productSlider/1.jpg"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div className="space-y-3 text-center">
-                <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                  <a href="">گوشی شیائومی m11</a>
+            {cart.map((single) => {
+              return (
+                <span className="card swiper-slide my-2 p-2 md:p-3 ">
+                  <div className="image-box mb-6 ">
+                    <a href="">
+                      <img
+                        className="hover:scale-105 transition rounded-3xl w-full mx-auto"
+                        src={single.image}
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <div className="space-y-3 text-center">
+                    <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
+                      <a href="">
+                        گوشی موبایل {single.brand} مدل {single.name} تک سیم کارت
+                        ظرفیت {single.ROM} و رم {single.RAM} گیگابایت
+                      </a>
+                    </span>
+                    <div className="flex justify-center text-xs opacity-75">
+                      <div className="line-through">{single.price}</div>
+                      <div className="line-through">تومان</div>
+                    </div>
+                    <div className="flex justify-center mt-1 mb-2 text-sm">
+                      <div>1.100.000</div>
+                      <div>تومان</div>
+                    </div>
+                  </div>
                 </span>
-                <div className="flex justify-center text-xs opacity-75">
-                  <div className="line-through">1.350.000</div>
-                  <div className="line-through">تومان</div>
-                </div>
-                <div className="flex justify-center mt-1 mb-2 text-sm">
-                  <div>1.100.000</div>
-                  <div>تومان</div>
-                </div>
-              </div>
-            </span>
-            <span className="card swiper-slide my-2 p-2 md:p-3 ">
-              <div className="image-box mb-6 ">
-                <a href="">
-                  <img
-                    className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                    src="assets/image/productSlider/2.jpg"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div className="space-y-3 text-center">
-                <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                  <a href="">اپل واچ m32</a>
-                </span>
-                <div className="flex justify-center text-xs opacity-75">
-                  <div className="line-through">1.350.000</div>
-                  <div className="line-through">تومان</div>
-                </div>
-                <div className="flex justify-center mt-1 mb-2 text-sm">
-                  <div>1.100.000</div>
-                  <div>تومان</div>
-                </div>
-              </div>
-            </span>
-            <span className="card swiper-slide my-2 p-2 md:p-3 ">
-              <div className="image-box mb-6 ">
-                <a href="">
-                  <img
-                    className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                    src="assets/image/productSlider/3.jpg"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div className="space-y-3 text-center">
-                <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                  <a href="">ریش تراش دیواید</a>
-                </span>
-                <div className="flex justify-center text-xs opacity-75">
-                  <div className="line-through">1.350.000</div>
-                  <div className="line-through">تومان</div>
-                </div>
-                <div className="flex justify-center mt-1 mb-2 text-sm">
-                  <div>1.100.000</div>
-                  <div>تومان</div>
-                </div>
-              </div>
-            </span>
-            <span className="card swiper-slide my-2 p-2 md:p-3 ">
-              <div className="image-box mb-6 ">
-                <a href="">
-                  <img
-                    className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                    src="assets/image/productSlider/4.jpg"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div className="space-y-3 text-center">
-                <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                  <a href="">تلویزیون 40 اینچ</a>
-                </span>
-                <div className="flex justify-center text-xs opacity-75">
-                  <div className="line-through">1.350.000</div>
-                  <div className="line-through">تومان</div>
-                </div>
-                <div className="flex justify-center mt-1 mb-2 text-sm">
-                  <div>1.100.000</div>
-                  <div>تومان</div>
-                </div>
-              </div>
-            </span>
+              );
+            })}
           </div>
         </div>
         <div className="border shadow-xl rounded-2xl mx-auto max-w-xl mt-7 flex flex-col gap-y-5 py-5 px-5 md:px-20">

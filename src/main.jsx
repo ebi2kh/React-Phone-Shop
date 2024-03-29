@@ -22,6 +22,8 @@ import AboutUs from "./pages/about/AboutUs";
 import SingleProduct from "./pages/category/SingleProduct";
 import { ShopContext, ShopProvider } from "./context/ShopContext ";
 import { CartContext, CartProvider } from "./context/CartContext";
+import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/checkout/Checkout";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -31,8 +33,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <BlogContextProvider>
           <ShopProvider>
             <Routes>
-              <Route path="/" element={<App />} />
               <Route path="/rent" element={<AboutUs />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/" element={<App />} />
               <Route path="/post/:id" element={<BlogSingle />} />
               <Route path="/product/:id" element={<SingleProduct />} />
             </Routes>

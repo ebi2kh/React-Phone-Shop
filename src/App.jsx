@@ -26,18 +26,18 @@ import SingleProduct from "./pages/category/SingleProduct";
 export default function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
+      <DropdownMenu />
       {/* <SearchButton /> */}
       {/* <RouterProvider router={router} /> */}
-      {/* <Cart /> */}
+      <Cart />
       {/* <Blog /> */}
-      <DropdownMenu />
       {/* <SingleProduct /> */}
       {/* <BlogAll /> */}
       {/* <Category /> */}
       {/* <Checkout /> */}
       {/* <Login /> */}
-      <Shop />
+      {/* <Shop /> */}
       <Footer />
     </>
   );
