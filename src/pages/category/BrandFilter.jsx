@@ -1,31 +1,11 @@
 import React, { useContext } from "react";
-import { ShopContext } from "./ShopContext";
+import { ShopContext } from "../../context/ShopContext ";
 
 export default function BrandFilter() {
-  const { state, dispatch } = useContext(ShopContext);
-
-  // Assuming your products data is stored in a state variable
-  const [products, setProducts] = useState(data);
-
-  // Get unique brands
-  const brands = [...new Set(products.map((product) => product.brand))];
-
-  const handleBrandSelect = (brand) => {
-    if (state.selectedBrands.includes(brand)) {
-      dispatch({
-        type: "SET_BRAND",
-        payload: state.selectedBrands.filter((b) => b !== brand),
-      });
-    } else {
-      dispatch({
-        type: "SET_BRAND",
-        payload: [...state.selectedBrands, brand],
-      });
-    }
-  };
+  const { brands, selectedBrands, handleBrandSelect } = useContext(ShopContext);
 
   return (
-    <div className="space-y-1">
+    <div>
       {brands.map((brand, index) => (
         <div
           key={index}
@@ -37,6 +17,7 @@ export default function BrandFilter() {
             defaultValue=""
             className="w-4 h-4 bg-gray-100 border-gray-300 mr-3"
             onChange={() => handleBrandSelect(brand)}
+            checked={selectedBrands.includes(brand)}
           />
           <label
             htmlFor={`checkbox-brand-${index}`}

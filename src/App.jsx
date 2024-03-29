@@ -18,19 +18,21 @@ import BlogAll from "./pages/blog/BlogAll";
 import Cart from "./pages/cart/Cart";
 import Category from "./pages/category/Category";
 import { Route } from "react-router-dom";
-
+import Shop from "./pages/category/Shop";
 import DropdownMenu from "./components/Header/DropdownMenu";
+
 export default function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <SearchButton /> */}
       {/* <RouterProvider router={router} /> */}
-      {/* <Category /> */}
       {/* <Cart /> */}
       {/* <Blog /> */}
       <DropdownMenu />
-      <BlogAll />
+      {/* <BlogAll /> */}
+      {/* <Category /> */}
+      <Shop />
       <Footer />
     </>
   );

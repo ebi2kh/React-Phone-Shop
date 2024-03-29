@@ -1,38 +1,8 @@
 import React, { useContext } from "react";
-import { ShopContext } from "./ShopContext";
+import { ShopContext } from "../../context/ShopContext ";
 
-export default function ProductGrid({ products }) {
-  const { state } = useContext(ShopContext);
-
-  // Filter and sort products
-  const displayedProducts = products
-    .filter(
-      (product) =>
-        (state.selectedBrands.length > 0
-          ? state.selectedBrands.includes(product.brand)
-          : true) &&
-        (state.selectedColors.length > 0
-          ? product.color.some((color) => state.selectedColors.includes(color))
-          : true)
-    )
-    .sort((a, b) => {
-      switch (sortOption) {
-        case "محبوب ترین":
-          return b.favorite - a.favorite;
-        case "پرفروش ترین":
-          return b.buyNumber - a.buyNumber;
-        case "ارزان ترین":
-          return a.price - b.price;
-        case "گران ترین":
-          return b.price - a.price;
-        case "جدیدترین":
-          return b.date - a.date;
-        case "پربازدیدترین":
-          return b.view - a.view;
-        default:
-          return 0;
-      }
-    });
+export default function ProductGrid() {
+  const { displayedProducts } = useContext(ShopContext);
 
   return (
     <div>

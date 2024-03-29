@@ -19,6 +19,7 @@ import { BlogContextProvider } from "./context/BlogContext ";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BlogSingle from "./pages/blog/BlogSingle";
 import AboutUs from "./pages/about/AboutUs";
+import { ShopContext, ShopProvider } from "./context/ShopContext ";
 
 // import Layout from "./routes/layout";
 // import NotMatch from "./routes/not-match";
@@ -68,11 +69,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <RouterProvider router={router} /> */}
     <BrowserRouter>
       <BlogContextProvider>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/rent" element={<AboutUs />} />
-          <Route path="/post/:id" element={<BlogSingle />} />
-        </Routes>
+        <ShopProvider>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/rent" element={<AboutUs />} />
+            <Route path="/post/:id" element={<BlogSingle />} />
+          </Routes>
+        </ShopProvider>
       </BlogContextProvider>
     </BrowserRouter>
   </React.StrictMode>
