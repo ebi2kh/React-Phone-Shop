@@ -1,6 +1,11 @@
-import React from "react";
-
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { ShopContext } from "../../context/ShopContext ";
 function SingleProduct() {
+  const { id } = useParams();
+  const { products } = useContext(ShopContext);
+  const product = products.find((product) => product.id === Number(id));
+  console.log(product);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="flex gap-x-2 px-10 mt-5 md:mt-10">
@@ -51,7 +56,8 @@ function SingleProduct() {
                 <div className="max-w-[300px] mx-auto">
                   <img
                     className="mySlides rounded-xl md:rounded-3xl"
-                    src="assets/image/productSlider/1.jpg"
+                    src={product.image}
+                    // http://localhost:5173/product/src/assets/image/productSlider/1.jpg
                     style={{ width: "100%" }}
                   />
                 </div>
@@ -59,12 +65,12 @@ function SingleProduct() {
             </div>
             <div className="w-full lg:w-2/3 mt-5 md:mt-0">
               <div className="opacity-80 text-lg font-semibold">
-                گوشی موبایل اپل مدل iPhone 13 Pro تک سیم کارت ظرفیت یک ترابایت و
-                رم 6 گیگابایت
+                گوشی موبایل {product.brand} مدل {product.name} تک سیم کارت ظرفیت{" "}
+                {product.ROM} و رم {product.RAM} گیگابایت
               </div>
-              <div className="opacity-50 text-xs mt-2 mb-4">
+              {/* <div className="opacity-50 text-xs mt-2 mb-4">
                 Apple iPhone 13 Pro Single SIM 1TB And 6GB RAM Mobile Phone
-              </div>
+              </div> */}
               <div className="md:flex sm:pr-7">
                 <div className="md:w-2/3">
                   <div className="flex items-center">
@@ -101,62 +107,6 @@ function SingleProduct() {
                               </div>
                             </label>
                           </div>
-                          <div className="inline-flex items-center">
-                            <label
-                              className="relative flex cursor-pointer items-center rounded-full p-3"
-                              htmlFor="red"
-                            >
-                              <input
-                                id="red"
-                                name="color"
-                                type="radio"
-                                className="before:content[''] peer relative h-7 w-7 cursor-pointer appearance-none rounded-full border border-blue-gray-200 bg-red-500 text-red-500 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-red-500 checked:before:bg-red-500 hover:before:opacity-10"
-                              />
-                              <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-red-500 opacity-0 transition-opacity peer-checked:opacity-100">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-3.5 w-3.5"
-                                  viewBox="0 0 16 16"
-                                  fill="currentColor"
-                                >
-                                  <circle
-                                    data-name="ellipse"
-                                    cx={8}
-                                    cy={8}
-                                    r={8}
-                                  />
-                                </svg>
-                              </div>
-                            </label>
-                          </div>
-                          <div className="inline-flex items-center">
-                            <label
-                              className="relative flex cursor-pointer items-center rounded-full p-3"
-                              htmlFor="green"
-                            >
-                              <input
-                                id="green"
-                                name="color"
-                                type="radio"
-                                className="before:content[''] peer relative h-7 w-7 cursor-pointer appearance-none rounded-full border border-blue-gray-200 bg-blue-500 text-blue-500 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
-                              />
-                              <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-blue-500 opacity-0 transition-opacity peer-checked:opacity-100">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-3.5 w-3.5"
-                                  viewBox="0 0 16 16"
-                                  fill="currentColor"
-                                >
-                                  <circle
-                                    data-name="ellipse"
-                                    cx={8}
-                                    cy={8}
-                                    r={8}
-                                  />
-                                </svg>
-                              </div>
-                            </label>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -169,31 +119,30 @@ function SingleProduct() {
                       <div className=" flex items-center">
                         <h3 className="opacity-60 ml-1">پردازنده:</h3>
                         <div className="opacity-80">
-                          <div className="text-right">AM 32x new design</div>
+                          <div className="text-right">{product.CPU}</div>
                         </div>
                       </div>
                       <div className=" flex items-center">
                         <h3 className="opacity-70 ml-1">سیستم عامل:</h3>
                         <div className="opacity-80">
-                          <div className="text-right">IOS</div>
+                          <div className="text-right">{product.OS}</div>
                         </div>
                       </div>
-                      <div className=" flex items-center">
-                        <h3 className="opacity-70 ml-1">فناوری ساخت:</h3>
-                        <div className="opacity-80">
-                          <div className="text-right">A2C</div>
-                        </div>
-                      </div>
+
                       <div className=" flex items-center">
                         <h3 className="opacity-70 ml-1">دوربین عقب:</h3>
                         <div className="opacity-80 ">
-                          <div className="text-right">64</div>
+                          <div className="text-right">
+                            {product.camera_back}
+                          </div>
                         </div>
                       </div>
                       <div className=" flex items-center">
                         <h3 className="opacity-70 ml-1">دوربین جلو:</h3>
                         <div className="opacity-80">
-                          <div className="text-right">32</div>
+                          <div className="text-right">
+                            {product.camera_front}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -210,9 +159,9 @@ function SingleProduct() {
                       </div>
                       <div className="text-left opacity-70 text-sm flex flex-col gap-y-6">
                         <div>6 ماهه تمام</div>
-                        <div>7 عدد</div>
+                        <div>{product.number} عدد</div>
                         <div className="flex text-red-500">
-                          <div>21,000,000</div>
+                          <div>{product.price}</div>
                           <div>تومان</div>
                         </div>
                         <div className="flex text-sm sm:text-sm items-center justify-center lg:justify-start">
@@ -243,6 +192,7 @@ function SingleProduct() {
                                 className="w-12 h-7 mx-2 text-center border focus:outline-none rounded-lg"
                                 type="number"
                                 min={1}
+                                max={product.number}
                                 step={1}
                                 defaultValue={1}
                                 readOnly=""

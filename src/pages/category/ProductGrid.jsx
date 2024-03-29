@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext ";
+import { Route, Link } from "react-router-dom";
 
 export default function ProductGrid() {
   const { displayedProducts } = useContext(ShopContext);
@@ -18,9 +19,9 @@ export default function ProductGrid() {
         // </div>
 
         // /////////////
-        <a
+        <Link
           key={index}
-          href="single-product.html"
+          to={`/product/${product.id}`}
           className="my-2 py-2 md:p-3 border rounded-xl flex items-center sm:inline hover:shadow-lg transition"
         >
           <div className="image-box sm:mb-6">
@@ -45,7 +46,7 @@ export default function ProductGrid() {
               <div className="line-through">تومان</div>
             </div>
           </div>
-        </a>
+        </Link>
 
         // /////////////
       ))}

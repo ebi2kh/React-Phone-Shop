@@ -32,7 +32,7 @@
 // ];
 
 //----------------------------
-
+import image1 from "./assets/image/productSlider/1.jpg";
 export default [
   {
     id: 1,
@@ -46,7 +46,7 @@ export default [
     ROM: 64,
     number: 5,
     color: ["RED", "GREEN", "BLUE"],
-    image: "./src/assets/image/productSlider/1.jpg",
+    image: image1,
     price: 12000000,
     date: new Date(2024, 11, 17),
     buyNumber: 23,
@@ -65,7 +65,7 @@ export default [
     ROM: 128,
     number: 10,
     color: ["BLACK", "SILVER", "VIOLET"],
-    image: "./src/assets/image/productSlider/1.jpg",
+    image: image1,
     price: 76000000,
     date: new Date(2024, 9, 17),
     buyNumber: 156,
@@ -84,7 +84,7 @@ export default [
     ROM: 256,
     number: 7,
     color: ["SILVER", "GOLD", "WHITE"],
-    image: "./src/assets/image/productSlider/1.jpg",
+    image: image1,
     price: 36000000,
     date: new Date(2024, 7, 17),
     buyNumber: 85,
@@ -103,7 +103,7 @@ export default [
     ROM: 128,
     number: 3,
     color: ["BLUE", "BLACK", "WHITE"],
-    image: "./src/assets/image/productSlider/1.jpg",
+    image: image1,
     price: 23000000,
     date: new Date(2024, 6, 17),
     buyNumber: 67,
@@ -122,7 +122,7 @@ export default [
     ROM: 256,
     number: 9,
     color: ["BLACK", "BLUE", "PURPLE"],
-    image: "./src/assets/image/productSlider/1.jpg",
+    image: image1,
     price: 45000000,
     date: new Date(2024, 3, 17),
     buyNumber: 98,

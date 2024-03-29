@@ -20,7 +20,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BlogSingle from "./pages/blog/BlogSingle";
 import AboutUs from "./pages/about/AboutUs";
 import { ShopContext, ShopProvider } from "./context/ShopContext ";
-
+import SingleProduct from "./pages/category/SingleProduct";
 // import Layout from "./routes/layout";
 // import NotMatch from "./routes/not-match";
 // import RentPage from "./routes/rent";
@@ -74,6 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/" element={<App />} />
             <Route path="/rent" element={<AboutUs />} />
             <Route path="/post/:id" element={<BlogSingle />} />
+            <Route path="/product/:id" element={<SingleProduct />} />
           </Routes>
         </ShopProvider>
       </BlogContextProvider>

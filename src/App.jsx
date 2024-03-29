@@ -32,12 +32,12 @@ export default function App() {
       {/* <Cart /> */}
       {/* <Blog /> */}
       <DropdownMenu />
-      <SingleProduct />
+      {/* <SingleProduct /> */}
       {/* <BlogAll /> */}
       {/* <Category /> */}
       {/* <Checkout /> */}
       {/* <Login /> */}
-      {/* <Shop /> */}
+      <Shop />
       <Footer />
     </>
   );
