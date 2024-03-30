@@ -23,6 +23,7 @@ import DropdownMenu from "./components/Header/DropdownMenu";
 import Login from "./pages/user/Login";
 import Checkout from "./pages/checkout/Checkout";
 import SingleProduct from "./pages/category/SingleProduct";
+import ProfileMain from "./pages/profile/ProfileMain";
 export default function App() {
   return (
     <>
@@ -30,7 +31,8 @@ export default function App() {
       <DropdownMenu />
       {/* <SearchButton /> */}
       {/* <RouterProvider router={router} /> */}
-      <Cart />
+      {/* <Cart /> */}
+      <ProfileMain />
       {/* <Blog /> */}
       {/* <SingleProduct /> */}
       {/* <BlogAll /> */}

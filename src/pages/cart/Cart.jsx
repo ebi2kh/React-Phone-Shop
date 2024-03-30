@@ -31,7 +31,10 @@ function Cart() {
             <tbody className="grid grid-cols-1 sm:grid-cols-2 md:contents gap-5">
               {cart.map((single) => {
                 return (
-                  <tr className="bg-white border-b hover:bg-gray-50 grid grid-cols-1 justify-items-center md:table-row">
+                  <tr
+                    key={single.id}
+                    className="bg-white border-b hover:bg-gray-50 grid grid-cols-1 justify-items-center md:table-row"
+                  >
                     <td className="p-4">
                       <img
                         src={single.image}
@@ -101,7 +104,13 @@ function Cart() {
                       {single.price} تومان
                     </td>
                     <td className="px-6 py-4">
-                      <a href="#" className=" text-red-600">
+                      <a
+                        href="#"
+                        className=" text-red-600"
+                        onClick={() => {
+                          removeFromCart(single.id);
+                        }}
+                      >
                         حذف
                       </a>
                     </td>
