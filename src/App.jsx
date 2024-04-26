@@ -17,22 +17,27 @@ import BlogSingle from "./pages/blog/BlogSingle";
 import BlogAll from "./pages/blog/BlogAll";
 import Cart from "./pages/cart/Cart";
 import Category from "./pages/category/Category";
-import { Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Shop from "./pages/category/Shop";
 import DropdownMenu from "./components/Header/DropdownMenu";
 import Login from "./pages/user/Login";
 import Checkout from "./pages/checkout/Checkout";
+import { ShopContext, ShopProvider } from "./context/ShopContext ";
+import { CartContext, CartProvider } from "./context/CartContext";
+import { BlogContextProvider } from "./context/BlogContext ";
 import SingleProduct from "./pages/category/SingleProduct";
 import ProfileMain from "./pages/profile/ProfileMain";
+import SimpleSlider from "./components/slides/SimpleSlider";
+import SlideMain from "./components/slides/SlideMain";
+import HomePage from "./pages/homepage/HomePage";
 export default function App() {
   return (
     <>
-      <Navbar />
-      <DropdownMenu />
+      {/* <SimpleSlider /> */}
       {/* <SearchButton /> */}
       {/* <RouterProvider router={router} /> */}
       {/* <Cart /> */}
-      <ProfileMain />
+      {/* <ProfileMain /> */}
       {/* <Blog /> */}
       {/* <SingleProduct /> */}
       {/* <BlogAll /> */}
@@ -40,7 +45,43 @@ export default function App() {
       {/* <Checkout /> */}
       {/* <Login /> */}
       {/* <Shop /> */}
-      <Footer />
+
+      <BrowserRouter>
+        <Navbar />
+        <DropdownMenu />
+        <CartProvider>
+          <BlogContextProvider>
+            <ShopProvider>
+              <Routes>
+                <Route path="/rent" element={<AboutUs />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/post/:id" element={<BlogSingle />} />
+                <Route path="/product/:id" element={<SingleProduct />} />
+              </Routes>
+            </ShopProvider>
+          </BlogContextProvider>
+        </CartProvider>{" "}
+        <Footer />
+      </BrowserRouter>
+
+      {/* <BrowserRouter>
+        <Navbar />
+
+        <CarProvider>
+          <Routes>
+            <Route path="/" element={<HomePages />} />
+            <Route path="about" element={<About />} />
+
+            <Route path="contact" element={<Contact />} />
+            <Route path="form" element={<FormModal />} />
+            <Route path="faq" element={<Faq />} />
+            <Route path="/post/:id" element={<CarSingle />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CarProvider>
+      </BrowserRouter> */}
     </>
   );
 }

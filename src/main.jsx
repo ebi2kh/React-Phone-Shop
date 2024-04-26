@@ -28,21 +28,6 @@ import Checkout from "./pages/checkout/Checkout";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
-    <BrowserRouter>
-      <CartProvider>
-        <BlogContextProvider>
-          <ShopProvider>
-            <Routes>
-              <Route path="/rent" element={<AboutUs />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/" element={<App />} />
-              <Route path="/post/:id" element={<BlogSingle />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
-            </Routes>
-          </ShopProvider>
-        </BlogContextProvider>
-      </CartProvider>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );

@@ -2,10 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import gif from "../img/1.gif";
-import x from "../img/2.webp";
-import x2 from "../img/2s.webp";
-import x3 from "../img/3s.webp";
+import product1 from "../../assets/image/heroSlider/4.jpg";
+import product2 from "../../assets/image/heroSlider/1.jpg";
+// import product3 from "../assets/image/heroSlider/3.gif";
 
 function SlideMain() {
   const settings = {
@@ -24,24 +23,24 @@ function SlideMain() {
           <div className="col-lg-8 px-0">
             <Slider {...settings}>
               <div>
-                <img src={x2} alt="Image 1" />
+                <img src={product1} alt="Image 1" />
               </div>
               <div>
-                <img src={x3} alt="Image 2" />
+                <img src={product2} alt="Image 2" />
               </div>
               <div>
-                <img src={x} alt="Image 3" />
+                <img src={product1} alt="Image 3" />
               </div>
             </Slider>
           </div>
-          <div className="col-lg-4 sec2-left ">
+          {/* <div className="col-lg-4 sec2-left ">
             <a href="#">
               <img src={gif} className="rounded" alt="" />
             </a>
             <a href="#">
               <img src={x} className="rounded mt-lg-2" alt=" " />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
