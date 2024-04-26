@@ -2,23 +2,22 @@ import React from "react";
 
 function SearchButton() {
   return (
-    <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
-      <div className="relative">
-        <input
-          type="search"
-          id="default-search"
-          className="sm:block w-full px-4 py-3 sm:pl-12 text-sm sm:text-base pl-8 text-red-900 placeholder:text-red-600 rounded-2xl text-right placeholder:text-sm focus:outline-red-400 border-2 border-red-400"
-          placeholder="جستجو محصول"
-          onfocus="showModalSearch()"
+    <div className="relative">
+      <input
+        type="search"
+        id="default-search"
+        className="sm:block w-full px-4 py-3 sm:pl-12 text-sm sm:text-base pl-8 text-red-900 placeholder:text-red-600 rounded-2xl text-right placeholder:text-sm focus:outline-red-400 border-2 border-red-400"
+        placeholder="جستجو محصول"
+      
+      />
+      <div className="absolute inset-y-0 left-0 flex items-center pl-4">
+        <img
+          className="w-5 h-5 text-gray-500"
+          src="assets/image/search.png"
+          alt=""
         />
-        <div className="absolute inset-y-0 left-0 flex items-center pl-4">
-          <img
-            className="w-5 h-5 text-gray-500"
-            src="assets/image/search.png"
-            alt=""
-          />
-        </div>
-        {/* <div
+      </div>
+      {/* <div
         className="absolute w-full bg-gray-50 shadow-2xl h-auto mt-2 z-50 rounded-2xl hidden"
         id="showModalSearch"
         style={{ display: "block" }}
@@ -190,7 +189,6 @@ function SearchButton() {
           </a>
         </div>
       </div> */}
-      </div>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import SearchButton from "./SearchButton";
 import logo from "../../assets/image/logo.png";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import UserShortInfo from "./UserShortInfo";
+import BasketShortInfo from "./BasketShortInfo";
 
 function Navbar() {
   return (
@@ -10,16 +12,14 @@ function Navbar() {
         <a className="order-2" href="index.html">
           <img className="w-36" src={logo} alt="" />
         </a>
-        <SearchButton />
-        {/* <div class="w-full">
-          <div class="py-2 px-5 bg-white shadow-stone-50 shadow-md hidden lg:block">
-            <div class="-mx-1"> */}
-
-        {/* </div>
-          </div>
-        </div> */}
+        <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
+          <SearchButton />
+        </div>
+        <div className="order-4 hidden lg:flex">
+          <UserShortInfo />
+          <BasketShortInfo />
+        </div>
       </nav>
-      {/* <RouterProvider router={router} /> */}
     </div>
   );
 }
