@@ -1,11 +1,17 @@
 import React from "react";
 
-function UserMenu() {
+function UserMenu({ setActiveComponent, activeComponent }) {
+  const isActive = (componentName) => {
+    return activeComponent === componentName ? "bg-gray-200 text-red-600" : "";
+  };
   return (
     <div className="border rounded-3xl shadow-lg flex flex-col justify-center items-center p-2 gap-y-2">
       <a
-        href="profile.html"
-        className="text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl bg-gray-200 text-red-600"
+        href="#"
+        onClick={() => setActiveComponent("UserInfo")}
+        className={`text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl ${isActive(
+          "UserInfo"
+        )}`}
       >
         پروفایل
         <svg
@@ -19,8 +25,12 @@ function UserMenu() {
         </svg>
       </a>
       <a
-        href="profile-order.html"
-        className="text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl"
+        href="#"
+        onClick={() => setActiveComponent("UserOrders")}
+        className={`text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl ${isActive(
+          "UserOrders"
+        )}
+        )}`}
       >
         سفارش ها
         <svg
@@ -34,8 +44,11 @@ function UserMenu() {
         </svg>
       </a>
       <a
-        href="profile-favorites.html"
-        className="text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl"
+        href="#"
+        onClick={() => setActiveComponent("UserFavorites")}
+        className={`text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl ${isActive(
+          "UserFavorites"
+        )}`}
       >
         علاقه مندی ها
         <svg
@@ -49,8 +62,11 @@ function UserMenu() {
         </svg>
       </a>
       <a
-        href="profile-address.html"
-        className="text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl"
+        href="#"
+        onClick={() => setActiveComponent("UserAddress")}
+        className={`text-sm opacity-80 w-full flex justify-end pr-5 flex-row-reverse items-center hover:text-red-600 transition hover:bg-gray-100 py-3 rounded-2xl ${isActive(
+          "UserAddress"
+        )}`}
       >
         آدرس های من
         <svg
