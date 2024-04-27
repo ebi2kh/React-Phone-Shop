@@ -53,10 +53,10 @@ export default function App() {
           <BlogContextProvider>
             <ShopProvider>
               <Routes>
-                <Route path="/rent" element={<AboutUs />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutUs />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/" element={<HomePage />} />
                 <Route path="/post/:id" element={<BlogSingle />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
               </Routes>
