@@ -1,5 +1,6 @@
 import { useState } from "react";
 import data from "../../data";
+import { Link } from "react-router-dom";
 function Category() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [sortOption, setSortOption] = useState(null);
@@ -244,8 +245,8 @@ function Category() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 px-1 rounded-2xl py-5">
                 {/* Render products */}
                 {sortedProducts.map((product) => (
-                  <a
-                    href="single-product.html"
+                  <Link
+                    to={`/product/${product.id}`}
                     className="my-2 py-2 md:p-3 border rounded-xl flex items-center sm:inline hover:shadow-lg transition"
                   >
                     <div className="image-box sm:mb-6">
@@ -270,7 +271,7 @@ function Category() {
                         <div className="line-through">تومان</div>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

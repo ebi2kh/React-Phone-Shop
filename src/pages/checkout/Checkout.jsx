@@ -1,93 +1,200 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 function Checkout() {
   const { cart } = useContext(CartContext);
+  // //////////validation for form////
+
+  const [formData, setFormData] = useState({
+    recipientName: "",
+    mobileNumber: "",
+    postalCode: "",
+    address: "",
+  });
+
+  const [errors, setErrors] = useState({
+    recipientName: "",
+    mobileNumber: "",
+    postalCode: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear errors on input change
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validateInput = () => {
+    let isValid = true;
+    let newErrors = {
+      recipientName: "",
+      mobileNumber: "",
+      postalCode: "",
+      address: "",
+    };
+
+    if (!formData.recipientName.trim()) {
+      newErrors.recipientName = "نام تحویل گیرنده نباید خالی باشد.";
+      isValid = false;
+    }
+    if (!formData.mobileNumber.trim()) {
+      newErrors.mobileNumber = "شماره موبایل نباید خالی باشد.";
+      isValid = false;
+    } else if (!/^\d+$/.test(formData.mobileNumber)) {
+      newErrors.mobileNumber = "شماره موبایل باید فقط شامل اعداد باشد.";
+      isValid = false;
+    }
+    if (!formData.postalCode.trim()) {
+      newErrors.postalCode = "کدپستی نباید خالی باشد.";
+      isValid = false;
+    } else if (!/^\d+$/.test(formData.postalCode)) {
+      newErrors.postalCode = "کدپستی باید فقط شامل اعداد باشد.";
+      isValid = false;
+    }
+    if (!formData.address.trim()) {
+      newErrors.address = "آدرس نباید خالی باشد.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateInput()) {
+      console.log("Form data submitted:", formData);
+      // Proceed with submitting the form data
+    }
+  };
+
+  // ////////////////////////
   return (
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="bg-white shadow-xl my-5 lg:my-10 rounded-xl md:rounded-2xl p-3 md:p-5">
-        <div className="flex flex-col md:flex-row gap-y-3 items-center gap-x-2 mb-7">
-          <div className="text-sm opacity-80">کد تخفیف دارید؟ وارد کنید:</div>
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row gap-y-3 items-center gap-x-2 mb-7">
+            <div className="text-sm opacity-80">کد تخفیف دارید؟ وارد کنید:</div>
+            <div>
+              <input
+                className="border border-gray-400 outline-none focus:border-red-300 rounded-lg p-1"
+                type="text"
+              />
+            </div>
+            <div>
+              <button className="bg-red-600 text-white px-3 py-1 rounded-lg shadow-md">
+                تایید
+              </button>
+            </div>
+          </div>
+
           <div>
-            <input
-              className="border border-gray-400 outline-none focus:border-red-300 rounded-lg p-1"
-              type="text"
-            />
+            <div className="text-lg md:text-xl opacity-70 mb-3">
+              جزئیات صورت حساب
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-5 md:px-20">
+              <div className="mb-4">
+                <label
+                  htmlFor="recipientName"
+                  className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
+                >
+                  نام تحویل گیرنده:
+                </label>
+                <input
+                  type="text"
+                  name="recipientName"
+                  className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
+                  value={formData.recipientName}
+                  onChange={handleChange}
+                />
+                {errors.recipientName && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.recipientName}
+                  </p>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="mobileNumber"
+                  className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
+                >
+                  شماره موبایل:
+                </label>
+                <input
+                  type="text"
+                  name="mobileNumber"
+                  className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
+                  value={formData.mobileNumber}
+                  onChange={handleChange}
+                />
+                {errors.mobileNumber && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.mobileNumber}
+                  </p>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="postalCode"
+                  className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
+                >
+                  کدپستی:
+                </label>
+                <input
+                  type="text"
+                  name="postalCode"
+                  className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
+                  value={formData.postalCode}
+                  onChange={handleChange}
+                />
+                {errors.postalCode && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.postalCode}
+                  </p>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="address"
+                  className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
+                >
+                  آدرس:
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
+                  value={formData.address}
+                  onChange={handleChange}
+                />
+                {errors.address && (
+                  <p className="text-red-500 text-xs mt-1">{errors.address}</p>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="mailTicket"
+                  className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
+                >
+                  توضیحات اضافه:
+                </label>
+                <textarea
+                  cols={30}
+                  rows={5}
+                  className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
+                  defaultValue={""}
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                ارسال
+              </button>
+            </div>
           </div>
-          <div>
-            <button className="bg-red-600 text-white px-3 py-1 rounded-lg shadow-md">
-              تایید
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="text-lg md:text-xl opacity-70 mb-3">
-            جزئیات صورت حساب
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-5 md:px-20">
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-              >
-                نام تحویل گیرنده:
-              </label>
-              <input
-                type="text"
-                className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-              >
-                شماره موبایل:
-              </label>
-              <input
-                type="text"
-                className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-              >
-                کدپستی:
-              </label>
-              <input
-                type="text"
-                className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-              >
-                آدرس:
-              </label>
-              <input
-                type="text"
-                className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="mailTicket"
-                className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-              >
-                توضیحات اضافه:
-              </label>
-              <textarea
-                cols={30}
-                rows={5}
-                className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-                defaultValue={""}
-              />
-            </div>
-          </div>
-        </div>
+        </form>
         <div>
           <div className="text-lg md:text-xl opacity-70 mb-3 mt-5">
             جزئیات محصولات

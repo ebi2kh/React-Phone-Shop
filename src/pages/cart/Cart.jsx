@@ -74,7 +74,7 @@ function Cart() {
                           type="number"
                           min={1}
                           step={1}
-                          defaultValue={1}
+                          defaultValue={single.quantity}
                           readOnly=""
                         />
                         <button
@@ -101,7 +101,7 @@ function Cart() {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-sm opacity-90 text-gray-900">
-                      {single.price} تومان
+                      {single.price * single.quantity} تومان
                     </td>
                     <td className="px-6 py-4">
                       <a
