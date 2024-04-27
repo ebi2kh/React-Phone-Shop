@@ -30,6 +30,7 @@ import ProfileMain from "./pages/profile/ProfileMain";
 import SimpleSlider from "./components/slides/SimpleSlider";
 import SlideMain from "./components/slides/SlideMain";
 import HomePage from "./pages/homepage/HomePage";
+import Faq from "./pages/faq/Faq";
 export default function App() {
   return (
     <>
@@ -55,6 +56,8 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutUs />} />
+                <Route path="/blog" element={<BlogAll />} />
+                <Route path="/faq" element={<Faq />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/post/:id" element={<BlogSingle />} />
