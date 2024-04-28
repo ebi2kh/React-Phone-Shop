@@ -260,10 +260,13 @@ function Category() {
                     </div>
                     <div className="flex flex-col w-full">
                       <span className="text-xs sm:text-sm opacity-90 mb-5">
-                        <div className="leading-7 h-auto">{product.name}</div>
+                        <div className="leading-7 h-auto">
+                          گوشی موبایل {product.brand} مدل {product.name} ظرفیت{" "}
+                          {product.ROM} گیگابایت و رم {product.RAM} گیگابایت
+                        </div>
                       </span>
                       <div className="flex justify-end mb-2 text-sm opacity-80 pl-3 md:pl-0">
-                        <div>{product.price}</div>
+                        <div>{product.price.toLocaleString()}</div>
                         <div>تومان</div>
                       </div>
                       <div className="flex justify-end text-xs opacity-75 pl-3 md:pl-0">
