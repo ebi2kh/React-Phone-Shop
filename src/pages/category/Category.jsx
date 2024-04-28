@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import data from "../../data";
 import { Link } from "react-router-dom";
 function Category() {
+  // const { displayedProducts } = useContext(ShopContext);
+
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [sortOption, setSortOption] = useState(null);
   const [selectedColors, setSelectedColors] = useState([]);
@@ -269,9 +271,24 @@ function Category() {
                         <div>{product.price.toLocaleString()}</div>
                         <div>تومان</div>
                       </div>
-                      <div className="flex justify-end text-xs opacity-75 pl-3 md:pl-0">
+                      {/* <div className="flex justify-end text-xs opacity-75 pl-3 md:pl-0">
                         <div className="line-through">1.350.000</div>
                         <div className="line-through">تومان</div>
+                      </div> */}
+                      <div className="flex justify-end text-xs opacity-75 pl-3 md:pl-0">
+                        {product.discount > 0 && (
+                          <>
+                            <div className="line-through">
+                              {product.price.toLocaleString()}
+                            </div>
+                            <div className="line-through">تومان</div>
+                            <div>
+                              {product.discountedPrice.toLocaleString()}
+                            </div>
+                            <div>تومان</div>
+                            <div>تخفیف: {product.discount}%</div>
+                          </>
+                        )}
                       </div>
                     </div>
                   </Link>

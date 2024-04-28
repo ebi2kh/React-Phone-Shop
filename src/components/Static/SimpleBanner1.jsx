@@ -1,17 +1,16 @@
 import React from "react";
-import banner from "../../assets/image/sectionImage/1.jpg";
+import banner from "../../assets/image/heroSlider/1.jpg";
+import banner2 from "../../assets/image/heroSlider/1-mobile.jpg";
+import { Link } from "react-router-dom";
 function SimpleBanner1() {
   return (
     <div>
-      <a href="search.html">
+      <Link to={"/category"}>
         <img className="rounded-2xl hidden md:block" src={banner} alt="" />
-      </a>
-      <a href="search.html" />
-      <img
-        className="rounded-2xl md:hidden"
-        src="assets/image/sectionImage/1-mobile.jpg"
-        alt=""
-      />
+      </Link>
+      <Link to={"/category"}>
+        <img className="rounded-2xl md:hidden" src={banner2} alt="" />
+      </Link>
     </div>
   );
 }

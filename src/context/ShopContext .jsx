@@ -4,8 +4,21 @@ export const ShopContext = createContext();
 
 export function ShopProvider({ children }) {
   // Assuming your products data is stored in a state variable
-  const [products, setProducts] = useState(data);
-
+  // const [products, setProducts] = useState(data);
+  const [products, setProducts] = useState(
+    data.map((product) => ({
+      ...product,
+      discount:
+        product.id % 2 === 0
+          ? Math.floor(Math.random() * (50 - 10 + 1) + 10)
+          : 0,
+      discountedPrice:
+        product.id % 2 === 0
+          ? product.price *
+            (1 - Math.floor(Math.random() * (50 - 10 + 1) + 10) / 100)
+          : product.price,
+    }))
+  );
   // Get unique brands and colors
   const brands = [...new Set(products.map((product) => product.brand))];
   const colors = [...new Set(products.flatMap((product) => product.color))];

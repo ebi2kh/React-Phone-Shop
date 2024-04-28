@@ -51,41 +51,6 @@ function BasketShortInfo() {
         } bg-white rounded-2xl shadow-md border-2 border-gray-50 text-sm absolute top-auto left-0 w-72 z-30 mt-1`}
       >
         <div className="bg-white rounded-2xl w-full relative z-10 py-2 px-2">
-          {/* <ul className="list-reset flex flex-col gap-y-2"> */}
-          {/* {cart.map((single) => {
-              return (
-                <li className="relative">
-                  <Link
-                    to={"/product/:id"}
-                    className="px-2 py-2 flex w-full items-start hover:bg-red-50 rounded-xl"
-                  >
-                    <span className="flex justify-center items-center opacity-90">
-                      <div className="flex">
-                        <img
-                          className="w-14 ml-2 rounded-lg"
-                          src={single.image}
-                          alt=""
-                        />
-                        <div className="flex flex-col flex-wrap gap-y-1 justify-center">
-                          <div className="opacity-80 w-full text-sm">
-                            کوله پشتی مدل ایستاده
-                          </div>
-                          <div className="flex opacity-75 text-xs">
-                            <div>قیمت:</div>
-                            <div>{single.price}</div>
-                            <div>تومان</div>
-                          </div>
-                        </div>
-                        <span className="text-red-400 hover:text-red-500 bg-red-100 hover:bg-red-200 px-2 text-xl font-bold h-7 rounded-full cursor-pointer absolute left-2 top-5">
-                          ×
-                        </span>
-                      </div>
-                    </span>
-                  </Link>
-                </li>
-              );
-            })} */}
-
           <div>
             {cart && cart.length > 0 ? (
               <ul className="list-reset flex flex-col gap-y-2">

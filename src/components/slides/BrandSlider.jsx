@@ -1,56 +1,60 @@
 import React from "react";
-import image1 from "../../assets/image/goodCategory/mobile.webp";
+import left from "../../assets/image/arrow-left.png";
+import honor from "../../assets/image/brands/honor.jpg";
+import iphone from "../../assets/image/brands/iphone.png";
+import nokia from "../../assets/image/brands/nokia.png";
+import samsung from "../../assets/image/brands/samsung.png";
+import xiami from "../../assets/image/brands/xiami.png";
+import { Link } from "react-router-dom";
 function BrandSlider() {
   return (
     <div className="bg-white rounded-2xl py-6 shadow-xl my-10">
       <div className="flex justify-between px-5 pb-5 md:px-10 items-center">
-        <div className="border-b-2 border-red-500 pb-1">
-          دسته بندی های محبوب
-        </div>
-        <a href="search.html">
+        <div className="border-b-2 border-red-500 pb-1">انواع برندها</div>
+        <Link to={"/category"}>
           <div className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">
             دیدن همه
-            <img className="w-4" src="assets/image/arrow-left.png" alt="" />
+            <img className="w-4" src={left} alt="" />
           </div>
-        </a>
+        </Link>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-4 gap-y-4 md:gap-x-8 2xl:gap-x-10 px-3 md:px-8 lg:px-28">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-4 md:gap-x-8 2xl:gap-x-10 px-3 md:px-8 lg:px-28">
         <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
-          <img src={image1} alt="" />
-          <div className="text-sm opacity-90">موبایل</div>
+          <img src={honor} alt="" />
+          <div className="text-sm opacity-90">آنر</div>
         </a>
         <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
-          <img src="assets/image/goodCategory/biutiful.webp" alt="" />
-          <div className="text-sm opacity-90">زیبایی</div>
+          <img src={iphone} alt="" />
+          <div className="text-sm opacity-90">آیفون</div>
         </a>
         <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
-          <img src="assets/image/goodCategory/book.webp" alt="" />
-          <div className="text-sm opacity-90">کتاب و دفتر</div>
+          <img src={nokia} alt="" />
+          <div className="text-sm opacity-90">نوکیا</div>
         </a>
         <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
-          <img src="assets/image/goodCategory/digital.webp" alt="" />
-          <div className="text-sm opacity-90">کالای دیجیتال</div>
+          <img src={samsung} alt="" />
+          <div className="text-sm opacity-90">سامسونگ</div>
         </a>
         <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
-          <img src="assets/image/goodCategory/market.webp" alt="" />
-          <div className="text-sm opacity-90">سوپر مارکت</div>
+          <img src={xiami} alt="" />
+          <div className="text-sm opacity-90">شیايومی</div>
         </a>
-        <a
+        {/* <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
@@ -63,7 +67,7 @@ function BrandSlider() {
         >
           <img src="assets/image/goodCategory/tools.webp" alt="" />
           <div className="text-sm opacity-90">ابزارآلات</div>
-        </a>
+        </a> */}
       </div>
     </div>
   );

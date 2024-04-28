@@ -2,8 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import product1 from "../../assets/image/heroSlider/4.jpg";
-import product2 from "../../assets/image/heroSlider/1.jpg";
+import product1 from "../../assets/image/heroSlider/banner1.jpg";
+import product2 from "../../assets/image/heroSlider/banner2.jpg";
+import product3 from "../../assets/image/heroSlider/banner3.jpg";
 
 // import product3 from "../assets/image/heroSlider/3.gif";
 function SimpleSlider() {
@@ -37,7 +38,7 @@ function SimpleSlider() {
         <div>
           <img
             className="rounded-md md:rounded-3xl md:px-2 "
-            src={product1}
+            src={product3}
             alt="Image 3"
           />
         </div>

@@ -35,30 +35,31 @@ function SingleProduct() {
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="flex gap-x-2 px-10 mt-5 md:mt-10">
         <div>
-          <a
-            href=""
+          <Link
+            to={"/"}
             className="hover:text-red-500 transition text-sm opacity-70"
           >
             خانه
-          </a>
+          </Link>
         </div>
         <div className="opacity-70">/</div>
+
         <div>
-          <a
-            href=""
-            className="hover:text-red-500 transition text-sm opacity-70"
-          >
-            کالای دیجیتال
-          </a>
-        </div>
-        <div className="opacity-70">/</div>
-        <div>
-          <a
-            href=""
+          <Link
+            to={"/category"}
             className="hover:text-red-500 transition text-sm opacity-70"
           >
             موبایل
-          </a>
+          </Link>
+        </div>
+        <div className="opacity-70">/</div>
+        <div>
+          <Link
+            to={"/category"}
+            className="hover:text-red-500 transition text-sm opacity-70"
+          >
+            موبایل
+          </Link>
         </div>
       </div>
       <div className="bg-white shadow-xl my-5 md:my-10 rounded-xl md:rounded-2xl p-3 md:p-5">
@@ -82,7 +83,6 @@ function SingleProduct() {
                   <img
                     className="mySlides rounded-xl md:rounded-3xl"
                     src={product.image}
-                    // http://localhost:5173/product/src/assets/image/productSlider/1.jpg
                     style={{ width: "100%" }}
                   />
                 </div>
@@ -186,8 +186,8 @@ function SingleProduct() {
                         <div>6 ماهه تمام</div>
                         <div>{product.number} عدد</div>
                         <div className="flex text-red-500">
-                          <div>{product.price}</div>
-                          <div>تومان</div>
+                          <div>{product.price.toLocaleString()}</div>
+                          <div>تومان </div>
                         </div>
                         <div className="flex text-sm sm:text-sm items-center justify-center lg:justify-start">
                           <div className="flex items-center justify-center select-none">
