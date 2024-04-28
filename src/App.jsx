@@ -29,6 +29,7 @@ import SingleProduct from "./pages/category/SingleProduct";
 import ProfileMain from "./pages/profile/ProfileMain";
 import SimpleSlider from "./components/slides/SimpleSlider";
 import SlideMain from "./components/slides/SlideMain";
+import NotFound from "./pages/404/NotFound";
 import HomePage from "./pages/homepage/HomePage";
 import Faq from "./pages/faq/Faq";
 export default function App() {
@@ -48,11 +49,11 @@ export default function App() {
       {/* <Shop /> */}
 
       <BrowserRouter>
-        <Navbar />
-        <DropdownMenu />
         <CartProvider>
           <BlogContextProvider>
             <ShopProvider>
+              <Navbar />
+              <DropdownMenu />
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutUs />} />
@@ -63,6 +64,7 @@ export default function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/post/:id" element={<BlogSingle />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="/* " element={<NotFound />} />
               </Routes>
             </ShopProvider>
           </BlogContextProvider>

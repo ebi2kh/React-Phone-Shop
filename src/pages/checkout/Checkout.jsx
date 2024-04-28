@@ -69,6 +69,14 @@ function Checkout() {
     }
   };
 
+  //
+  // Calculate total price
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  //
+
   // ////////////////////////
   return (
     <div className="max-w-[1440px] mx-auto px-3">
@@ -220,7 +228,9 @@ function Checkout() {
                       </a>
                     </span>
                     <div className="flex justify-center text-xs opacity-75">
-                      <div className="line-through">{single.price}</div>
+                      <div className="line-through">
+                        {(single.price * single.quantity).toLocaleString()}
+                      </div>
                       <div className="line-through">تومان</div>
                     </div>
                     <div className="flex justify-center mt-1 mb-2 text-sm">
@@ -237,7 +247,7 @@ function Checkout() {
           <div className="flex justify-between">
             <div>قیمت کل:</div>
             <div className="flex gap-x-1">
-              <div>1,240,000</div>
+              <div>{totalPrice.toLocaleString()}</div>
               <div>تومان</div>
             </div>
           </div>
