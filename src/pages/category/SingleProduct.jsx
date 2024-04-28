@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext ";
 import { CartContext } from "../../context/CartContext";
@@ -8,6 +8,28 @@ function SingleProduct() {
   const { products } = useContext(ShopContext);
   const { addToCart, cart } = useContext(CartContext);
   const product = products.find((product) => product.id === Number(id));
+
+  // /////////
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => {
+    if (quantity < product.number) {
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+  // ////////
+
+  // //////
+  const handleAddToCart = () => {
+    addToCart(product, quantity); // Pass the quantity along with the product
+  };
+  // /////
   console.log(cart);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
@@ -171,6 +193,7 @@ function SingleProduct() {
                           <div className="flex items-center justify-center select-none">
                             <div className="quantity flex items-center">
                               <button
+                                onClick={handleIncrease}
                                 className="quantity-nav quantity-button quantity-up inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200"
                                 type="button"
                               >
@@ -197,10 +220,12 @@ function SingleProduct() {
                                 min={1}
                                 max={product.number}
                                 step={1}
+                                value={quantity}
                                 defaultValue={1}
                                 readOnly=""
                               />
                               <button
+                                onClick={handleDecrease}
                                 className="quantity-nav quantity-button quantity-down inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 "
                                 type="button"
                               >
@@ -228,7 +253,8 @@ function SingleProduct() {
                     </div>
                     <span className="flex justify-center items-center opacity-90">
                       <button
-                        onClick={() => addToCart(product)}
+                        // onClick={() => addToCart(product)}
+                        onClick={handleAddToCart}
                         className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
                       >
                         افزودن به سبد خرید

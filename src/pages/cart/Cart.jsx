@@ -1,8 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 function Cart() {
-  const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  // const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
+    useContext(CartContext);
+
+  // ///////
+  // Calculate total price
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  // //////
   console.log(cart);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
@@ -49,6 +60,8 @@ function Cart() {
                     <td className="px-6 py-4">
                       <div className="quantity flex items-center">
                         <button
+                          // onClick={handleIncrease}
+                          onClick={() => increaseQuantity(single.id)}
                           className="quantity-nav quantity-button quantity-up inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200"
                           type="button"
                         >
@@ -74,10 +87,13 @@ function Cart() {
                           type="number"
                           min={1}
                           step={1}
-                          defaultValue={single.quantity}
+                          // defaultValue={single.quantity}
+                          value={single.quantity}
                           readOnly=""
                         />
                         <button
+                          // onClick={handleDecrease}
+                          onClick={() => decreaseQuantity(single.id)}
                           className="quantity-nav quantity-button quantity-down inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 "
                           type="button"
                         >
@@ -124,21 +140,21 @@ function Cart() {
           <div className="flex justify-between">
             <div>قیمت کل:</div>
             <div className="flex gap-x-1">
-              <div>1,240,000</div>
+              <div>{totalPrice.toLocaleString()}</div>
               <div>تومان</div>
             </div>
           </div>
           <div className="flex justify-between">
             <div>حمل و نقل:</div>
             <div className="flex gap-x-1">
-              <div>40,000</div>
+              <div>{(40000).toLocaleString()}</div>
               <div>تومان</div>
             </div>
           </div>
           <div className="flex justify-between">
             <div>سود شما از این خرید:</div>
             <div className="flex gap-x-1">
-              <div>80,000</div>
+              <div>{(80000).toLocaleString()}</div>
               <div>تومان</div>
             </div>
           </div>
@@ -150,8 +166,29 @@ function Cart() {
             </div>
           </div>
         </div>
-        <a
-          href="checkout.html"
+
+        {cart.length > 0 ? (
+          <div className="flex flex-col gap-2  justify-center items-center opacity-90 my-5">
+            <Link
+              to={`/checkout`}
+              className="flex justify-center px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
+            >
+              تایید و پرداخت
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2 justify-center items-center opacity-90 my-5">
+            <p className="text-center  text-red-500">سبد خرید شما خالی است.</p>
+            <button
+              className="px-7 py-2 text-center text-white bg-gray-500 align-middle border-0 rounded-lg shadow-md text-sm cursor-not-allowed"
+              disabled
+            >
+              تایید و پرداخت
+            </button>
+          </div>
+        )}
+        {/* <a
+         
           className="flex justify-center items-center opacity-90 my-5"
         >
           <Link
@@ -160,7 +197,7 @@ function Cart() {
           >
             تایید و پرداخت
           </Link>
-        </a>
+        </a> */}
       </div>
     </div>
   );
