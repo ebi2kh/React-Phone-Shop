@@ -14,6 +14,31 @@ function BigSlider() {
     slidesToShow: 8,
     autoplay: true,
     slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   // Randomly select 5 products
@@ -158,7 +183,7 @@ function BigSlider() {
                       <div className="line-through">تومان</div>
                     </div>
                   </div>
-                  <div
+                  {/* <div
                     dir="ltr"
                     className="clockdiv flex text-red-600 text-sm mt-2"
                     data-date="December 22, 2025 21:14:01"
@@ -174,7 +199,7 @@ function BigSlider() {
                     <div>
                       <span className="seconds">39</span>
                     </div>
-                  </div>
+                  </div> */}
                 </Link>
               </div>
             </div>

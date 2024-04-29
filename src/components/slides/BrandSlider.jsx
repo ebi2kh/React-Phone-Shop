@@ -19,41 +19,42 @@ function BrandSlider() {
         </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-4 md:gap-x-8 2xl:gap-x-10 px-3 md:px-8 lg:px-28">
-        <a
-          href="search.html"
+        <Link
+          to={"/category"}
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
           <img src={honor} alt="" />
           <div className="text-sm opacity-90">آنر</div>
-        </a>
-        <a
-          href="search.html"
-          className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
+        </Link>
+        <Link
+          to={"/category"}
+          className="flex justify-center items-center flex-col gap-y-3
+          hover:scale-105 transition"
         >
           <img src={iphone} alt="" />
           <div className="text-sm opacity-90">آیفون</div>
-        </a>
-        <a
-          href="search.html"
+        </Link>
+        <Link
+          to={"/category"}
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
           <img src={nokia} alt="" />
           <div className="text-sm opacity-90">نوکیا</div>
-        </a>
-        <a
-          href="search.html"
+        </Link>
+        <Link
+          to={"/category"}
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
           <img src={samsung} alt="" />
           <div className="text-sm opacity-90">سامسونگ</div>
-        </a>
-        <a
-          href="search.html"
+        </Link>
+        <Link
+          to={"/category"}
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
         >
           <img src={xiami} alt="" />
           <div className="text-sm opacity-90">شیايومی</div>
-        </a>
+        </Link>
         {/* <a
           href="search.html"
           className="flex justify-center items-center flex-col gap-y-3 hover:scale-105 transition"
