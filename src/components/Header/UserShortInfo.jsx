@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function UserShortInfo() {
   return (
     <span className="block relative">
-      <a
-        href="login.html"
+      <Link
+        to={""}
         className="flex items-center h-10 leading-10 px-3 mx-1 transition rounded-xl hover:bg-red-50"
       >
         <img className="ml-1 w-6" src="assets/image/user.png" alt="" />
@@ -16,8 +17,8 @@ function UserShortInfo() {
             alt=""
           />
         </span>
-      </a>
-      <div className="hidden bg-white rounded-2xl shadow-md border-gray-50 text-sm absolute top-auto right-0 w-64 z-30 mt-1">
+      </Link>
+      {/* <div className="hidden bg-white rounded-2xl shadow-md border-gray-50 text-sm absolute top-auto right-0 w-64 z-30 mt-1">
         <div className="bg-white rounded-2xl w-full relative z-10 py-2 px-2">
           <ul className="list-reset">
             <li className="relative border-b-2 border-red-300 pb-2">
@@ -82,7 +83,7 @@ function UserShortInfo() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </span>
   );
 }

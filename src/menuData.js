@@ -1,46 +1,39 @@
 export default [
   {
     label: "صفحه اصلی",
-    href: "/rent",
+    href: "/",
   },
   ,
   {
-    label: "پوشاک",
-    href: "/rent",
+    label: "فروشگاه",
+    href: "/category",
 
     submenu: [
-      { label: "مردانه", href: "#" },
-      {
-        label: "زنانه",
-        href: "#",
-      },
-      { label: "پچه‌گانه", href: "#" },
-    ],
-  },
-  {
-    label: "موبایل",
-    href: "/rent",
-
-    submenu: [
-      { label: "آیفون", href: "#" },
+      { label: "اپل", href: "/category" },
       {
         label: "سامسونگ",
         href: "#",
       },
-      { label: "هواوی", href: "#" },
+      { label: "هواوی", href: "/category" },
+      { label: "نوکیا", href: "/category" },
+      { label: "آنر", href: "/category" },
+      { label: "شیائومی", href: "/category" },
     ],
   },
   {
-    label: "کامپیوتر",
-    href: "/rent",
-
-    submenu: [
-      { label: "لپ تاپ", href: "#" },
-      {
-        label: "هارد دیسک",
-        href: "#",
-      },
-      { label: "هواوی", href: "#" },
-    ],
+    label: "بلاگ",
+    href: "/blog",
+  },
+  {
+    label: "سوالات متداول",
+    href: "/faq",
+  },
+  {
+    label: "درباره ما",
+    href: "/about",
+  },
+  {
+    label: "سبد خرید",
+    href: "/cart",
   },
 ];

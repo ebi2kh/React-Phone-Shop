@@ -1,7 +1,7 @@
 import React from "react";
 import SearchButton from "./SearchButton";
-import logo from "../../assets/image/logo.png";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import logo from "../../assets/image/logo.jpg";
+import { Link } from "react-router-dom";
 import UserShortInfo from "./UserShortInfo";
 import BasketShortInfo from "./BasketShortInfo";
 
@@ -9,9 +9,9 @@ function Navbar() {
   return (
     <div>
       <nav className="relative px-5 py-2 flex flex-wrap justify-between items-start pt-5 bg-white">
-        <a className="order-2" href="index.html">
-          <img className="w-36" src={logo} alt="" />
-        </a>
+        <Link className="order-2" to={"/"}>
+          <img className="w-14" src={logo} alt="" />
+        </Link>
         <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
           <SearchButton />
         </div>

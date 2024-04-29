@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../../assets/image/search.png";
 function SearchButton() {
   return (
     <div className="relative">
@@ -8,14 +8,9 @@ function SearchButton() {
         id="default-search"
         className="sm:block w-full px-4 py-3 sm:pl-12 text-sm sm:text-base pl-8 text-red-900 placeholder:text-red-600 rounded-2xl text-right placeholder:text-sm focus:outline-red-400 border-2 border-red-400"
         placeholder="جستجو محصول"
-      
       />
       <div className="absolute inset-y-0 left-0 flex items-center pl-4">
-        <img
-          className="w-5 h-5 text-gray-500"
-          src="assets/image/search.png"
-          alt=""
-        />
+        <img className="w-5 h-5 text-gray-500" src={logo} alt="" />
       </div>
       {/* <div
         className="absolute w-full bg-gray-50 shadow-2xl h-auto mt-2 z-50 rounded-2xl hidden"

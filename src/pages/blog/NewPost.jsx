@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { BlogContext } from "../../context/BlogContext ";
+import { Link } from "react-router-dom";
 function NewPost() {
   const { newestPosts } = useContext(BlogContext);
   return (
@@ -8,9 +9,9 @@ function NewPost() {
         <div className="opacity-90 border-b pb-3">جدیدترین مقاله ها:</div>
         {newestPosts.map((post) => {
           return (
-            <a
+            <Link
               key={post.id}
-              href="blog(single).html"
+              to={`/post/${post.id}`}
               className="flex flex-row items-center p-1"
             >
               <div className="md:ml-3  mb-3 md:mb-0">
@@ -25,10 +26,10 @@ function NewPost() {
                   {post.title}
                 </div>
                 <div className="text-xs md:flex justify-start opacity-75  mx-auto md:mx-0 pb-3">
-                  <div>{post.date.toLocaleDateString()}</div>
+                  {/* <div>{post.date.toLocaleDateString()}</div> */}
                 </div>
               </div>
-            </a>
+            </Link>
           );
         })}
       </div>

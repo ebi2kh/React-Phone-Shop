@@ -7,7 +7,7 @@ export const BlogContext = createContext();
 export const BlogContextProvider = (props) => {
   const [posts, setPosts] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 2;
+  const postsPerPage = 4;
 
   // Function to change the page
   const changePage = (pageNumber) => {
