@@ -161,7 +161,7 @@ function Cart() {
           <div className="flex justify-between">
             <div className="text-red-600">مجموع نهایی:</div>
             <div className="flex gap-x-1">
-              <div>1,200,000</div>
+              <div>{(totalPrice + 40000).toLocaleString()}</div>
               <div>تومان</div>
             </div>
           </div>

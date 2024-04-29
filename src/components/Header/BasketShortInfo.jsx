@@ -25,7 +25,6 @@ function BasketShortInfo() {
     }, 500); // Delay in milliseconds, adjust as needed
   };
 
-  console.log(cart);
   return (
     <span
       className="block relative"
@@ -97,7 +96,7 @@ function BasketShortInfo() {
                     </li>
                     <li className="relative">
                       <Link
-                        to={"/checkout"}
+                        to={"/cart"}
                         className="px-2 py-2 flex w-full items-start justify-center"
                       >
                         <span className="flex justify-center items-center opacity-90">

@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
+
 function Checkout() {
   const { cart } = useContext(CartContext);
   // //////////validation for form////
@@ -18,6 +20,7 @@ function Checkout() {
     address: "",
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -66,6 +69,7 @@ function Checkout() {
     if (validateInput()) {
       console.log("Form data submitted:", formData);
       // Proceed with submitting the form data
+      navigate("/confirm");
     }
   };
 
@@ -194,93 +198,95 @@ function Checkout() {
                   defaultValue={""}
                 />
               </div>
-              <button
+              {/* <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 ارسال
-              </button>
+              </button> */}
             </div>
           </div>
-        </form>
-        <div>
-          <div className="text-lg md:text-xl opacity-70 mb-3 mt-5">
-            جزئیات محصولات
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 lg:px-16">
-            {cart.map((single) => {
-              return (
-                <span className="card swiper-slide my-2 p-2 md:p-3 ">
-                  <div className="image-box mb-6 ">
-                    <a href="">
-                      <img
-                        className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                        src={single.image}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="space-y-3 text-center">
-                    <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
+          {/* </form> */}
+          <div>
+            <div className="text-lg md:text-xl opacity-70 mb-3 mt-5">
+              جزئیات محصولات
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 lg:px-16">
+              {cart.map((single) => {
+                return (
+                  <span className="card swiper-slide my-2 p-2 md:p-3 ">
+                    <div className="image-box mb-6 ">
                       <a href="">
-                        گوشی موبایل {single.brand} مدل {single.name} تک سیم کارت
-                        ظرفیت {single.ROM} و رم {single.RAM} گیگابایت
+                        <img
+                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
+                          src={single.image}
+                          alt=""
+                        />
                       </a>
-                    </span>
-                    <div className="flex justify-center text-xs opacity-75">
+                    </div>
+                    <div className="space-y-3 text-center">
+                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
+                        <a href="">
+                          گوشی موبایل {single.brand} مدل {single.name} تک سیم
+                          کارت ظرفیت {single.ROM} و رم {single.RAM} گیگابایت
+                        </a>
+                      </span>
+                      {/* <div className="flex justify-center text-xs opacity-75">
                       <div className="line-through">
                         {(single.price * single.quantity).toLocaleString()}
                       </div>
                       <div className="line-through">تومان</div>
+                    </div> */}
+                      <div className="flex justify-center mt-1 mb-2 text-sm">
+                        <div>
+                          {" "}
+                          {(single.price * single.quantity).toLocaleString()}
+                        </div>
+                        <div>تومان</div>
+                      </div>
                     </div>
-                    <div className="flex justify-center mt-1 mb-2 text-sm">
-                      <div>1.100.000</div>
-                      <div>تومان</div>
-                    </div>
-                  </div>
-                </span>
-              );
-            })}
-          </div>
-        </div>
-        <div className="border shadow-xl rounded-2xl mx-auto max-w-xl mt-7 flex flex-col gap-y-5 py-5 px-5 md:px-20">
-          <div className="flex justify-between">
-            <div>قیمت کل:</div>
-            <div className="flex gap-x-1">
-              <div>{totalPrice.toLocaleString()}</div>
-              <div>تومان</div>
+                  </span>
+                );
+              })}
             </div>
           </div>
-          <div className="flex justify-between">
-            <div>حمل و نقل:</div>
-            <div className="flex gap-x-1">
-              <div>40,000</div>
-              <div>تومان</div>
+          <div className="border shadow-xl rounded-2xl mx-auto max-w-xl mt-7 flex flex-col gap-y-5 py-5 px-5 md:px-20">
+            <div className="flex justify-between">
+              <div>قیمت کل:</div>
+              <div className="flex gap-x-1">
+                <div>{totalPrice.toLocaleString()}</div>
+                <div>تومان</div>
+              </div>
+            </div>
+            <div className="flex justify-between">
+              <div>حمل و نقل:</div>
+              <div className="flex gap-x-1">
+                <div>40,000</div>
+                <div>تومان</div>
+              </div>
+            </div>
+            <div className="flex justify-between">
+              <div>سود شما از این خرید:</div>
+              <div className="flex gap-x-1">
+                <div>80,000</div>
+                <div>تومان</div>
+              </div>
+            </div>
+            <div className="flex justify-between">
+              <div className="text-red-600">مجموع نهایی:</div>
+              <div className="flex gap-x-1">
+                <div>{(totalPrice + 40000).toLocaleString()}</div>
+                <div>تومان</div>
+              </div>
             </div>
           </div>
-          <div className="flex justify-between">
-            <div>سود شما از این خرید:</div>
-            <div className="flex gap-x-1">
-              <div>80,000</div>
-              <div>تومان</div>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div className="text-red-600">مجموع نهایی:</div>
-            <div className="flex gap-x-1">
-              <div>1,200,000</div>
-              <div>تومان</div>
-            </div>
-          </div>
-        </div>
-        <a
-          href="#"
-          className="flex justify-center items-center opacity-90 my-5"
-        >
-          <button className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">
+          <button
+            type="submit"
+            className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
+          >
             ثبت و پرداخت
           </button>
-        </a>
+        </form>
       </div>
     </div>
   );

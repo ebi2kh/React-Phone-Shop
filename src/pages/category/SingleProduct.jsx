@@ -3,6 +3,12 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext ";
 import { CartContext } from "../../context/CartContext";
 import { Route, Link } from "react-router-dom";
+import d from "../../assets/image/services/cash-on-delivery.svg";
+import d1 from "../../assets/image/services/days-return.svg";
+import d2 from "../../assets/image/services/express-delivery.svg";
+import d3 from "../../assets/image/services/original-products.svg";
+
+import ProductSlider from "../../components/slides/ProductSlider";
 function SingleProduct() {
   const { id } = useParams();
   const { products } = useContext(ShopContext);
@@ -24,13 +30,16 @@ function SingleProduct() {
     }
   };
   // ////////
+  const [isAdded, setIsAdded] = useState(false);
 
   // //////
   const handleAddToCart = () => {
     addToCart(product, quantity); // Pass the quantity along with the product
+
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 5000); // Optional: hide message after 3 seconds
   };
   // /////
-  console.log(cart);
   return (
     <div className="max-w-[1440px] mx-auto px-3">
       <div className="flex gap-x-2 px-10 mt-5 md:mt-10">
@@ -55,10 +64,10 @@ function SingleProduct() {
         <div className="opacity-70">/</div>
         <div>
           <Link
-            to={"/category"}
+            to={`/product/${product.id}`}
             className="hover:text-red-500 transition text-sm opacity-70"
           >
-            موبایل
+            {product.name}
           </Link>
         </div>
       </div>
@@ -259,12 +268,17 @@ function SingleProduct() {
                       >
                         افزودن به سبد خرید
                       </button>
-                      <Link
+                      {isAdded && (
+                        <div className="text-green-500 mt-2">
+                          محصول به سبد خرید اضافه شد
+                        </div>
+                      )}
+                      {/* <Link
                         to={`/cart`}
                         className="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm"
                       >
                         cart
-                      </Link>
+                      </Link> */}
                     </span>
                   </div>
                 </div>
@@ -274,25 +288,25 @@ function SingleProduct() {
           <div className="flex justify-around my-5">
             <div className="flex flex-col items-center justify-center">
               <div>
-                <img src="assets/image/services/cash-on-delivery.svg" alt="" />
+                <img src={d} alt="" />
               </div>
               <div className="opacity-70 text-xs">پرداخت در محل</div>
             </div>
             <div className="flex flex-col items-center justify-center">
               <div>
-                <img src="assets/image/services/days-return.svg" alt="" />
+                <img src={d1} alt="" />
               </div>
               <div className="opacity-70 text-xs">قابل برگشت</div>
             </div>
             <div className="flex flex-col items-center justify-center">
               <div>
-                <img src="assets/image/services/express-delivery.svg" alt="" />
+                <img src={d2} alt="" />
               </div>
               <div className="opacity-70 text-xs">ارسال سریع</div>
             </div>
             <div className="flex flex-col items-center justify-center">
               <div>
-                <img src="assets/image/services/original-products.svg" alt="" />
+                <img src={d3} alt="" />
               </div>
               <div className="opacity-70 text-xs">ضمانت کالا</div>
             </div>
@@ -406,529 +420,10 @@ function SingleProduct() {
                   توانایی رقابت با آن را دارد.
                 </p>
               </div>
-              <div
-                className="bg-gray-50 p-4 rounded-xl hidden"
-                id="test"
-                role="tabpanel"
-                aria-labelledby="test-tab"
-              >
-                <div className="flex flex-col items-start gap-y-4">
-                  <span className="border-b-red-500 border-b">
-                    بررسی تخصصی محصول
-                  </span>
-                  <span className="border-b-red-500 border-b text-sm">
-                    طراحی کاربر پسند
-                  </span>
-                </div>
-                <div className="md:flex gap-3">
-                  <p className="text-gray-500 text-sm leading-7 mt-3">
-                    آیفون SE 2020 به عنوان جدید‌ترین گوشی هوشمند مقرون ‌به ‌صرفه
-                    این شرکت معرفی شده بود که در قسمت‌های کناری برخلاف پرچمداران
-                    خانواده آیفون 11 که فریمی منحنی شکل داشتند، فریم تخت داشت.
-                    این طراحی یادآور طراحی‌های قدیمی‌ این شرکت بود و حس نوستالژی
-                    را به کاربر منتقل می‌کرد. برای اولین بار، از این طراحی در
-                    گوشی‌های هوشمند خانواده آیفون 12 نیز استفاده شد که استقبال
-                    بی نظیر کاربران را به همراه داشت. همین امر سبب شد تا
-                    پرچمداران خانواده آیفون 13 نیز از این طراحی نوستالژی و جذاب
-                    بهره ببرند. در نگاه اولیه شاید طراحی در نظر گرفته شده برای
-                    آیفون 13 پرو تفاوت چندانی با آیفون 12 پرو نداشته باشد، اما
-                    اپل توانست با تغییرات هرچند اندک و تنوع رنگی جدید، ظاهری به
-                    مراتب جذاب‌تر و همه پسندتر به آن بدهد.
-                  </p>
-                  <img
-                    className="max-w-[320px] w-full mx-auto rounded-3xl"
-                    src="assets/image/product/good.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div
-                className="bg-gray-50 p-4 rounded-xl hidden"
-                id="details"
-                role="tabpanel"
-                aria-labelledby="details-tab"
-              >
-                <span className="border-b-red-500 border-b">
-                  مشخصات فنی محصول
-                </span>
-                <div className="text-gray-500 text-sm grid grid-cols-1 gap-x-3 md:grid-cols-2">
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">پردازنده:</div>
-                    <div className="text-xs opacity-70">AM32x new product</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">فرکانس پردازنده:</div>
-                    <div className="text-xs opacity-70">32HR</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">وزن:</div>
-                    <div className="text-xs opacity-70">230 گرم</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">نسخه بلوتوث:</div>
-                    <div className="text-xs opacity-70">7r</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">نسخه وای فای:</div>
-                    <div className="text-xs opacity-70">3prm new test</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">سیستم عامل:</div>
-                    <div className="text-xs opacity-70">IOS</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">پردازنده گرافیکی:</div>
-                    <div className="text-xs opacity-70">Hiliston 7200</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">دوربین جلو:</div>
-                    <div className="text-xs opacity-70">12 MP</div>
-                  </div>
-                  <div className="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                    <div className="text-xs opacity-80">دوربین عقب:</div>
-                    <div className="text-xs opacity-70">24MP</div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="bg-gray-50 p-4 rounded-xl hidden"
-                id="commentsBuy"
-                role="tabpanel"
-                aria-labelledby="commentsBuy-tab"
-              >
-                <span className="border-b-red-500 border-b">
-                  دیدگاه های محصول
-                </span>
-                <p className="text-gray-500 text-sm"></p>
-                <div className="flex flex-col py-4 px-4 mx-auto my-6 max-w-7xl rounded-2xl bg-white">
-                  {/* UO COMMENTS */}
-                  <div>
-                    <div>دیدگاه ها</div>
-                    <div className="opacity-70 text-xs">1 دیدگاه</div>
-                  </div>
-                  {/* COMMENT */}
-                  <div className="bg-gray-50 rounded-xl px-3 sm:px-5 py-3 my-2">
-                    <div className="flex flex-col items-stat gap-y-2">
-                      <div className="flex items-center">
-                        <div className="text-green-400 bg-green-100 px-1 rounded-md text-sm">
-                          4.7
-                        </div>
-                        <div className="text-xs opacity-60 pr-1">
-                          ارسال شده توسط امیررضا کریمی
-                        </div>
-                        <div className="text-xs opacity-60 pr-1">
-                          1402/05/12
-                        </div>
-                      </div>
-                      <span className="text-green-400 bg-green-100 px-1 w-24 rounded-md text-sm text-center">
-                        پیشنهاد شده
-                      </span>
-                    </div>
-                    <div>
-                      <div className="opacity-60 text-sm py-3">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-                        بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                      </div>
-                      <div className="flex flex-col gap-y-2">
-                        <div className="flex text-green-400 text-xs">
-                          <div>+</div>
-                          <div>طراحی زیبا</div>
-                        </div>
-                        <div className="flex text-green-400 text-xs">
-                          <div>+</div>
-                          <div>خوش دستی</div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-y-2 mt-2">
-                        <div className="flex text-red-400 text-xs">
-                          <div>-</div>
-                          <div>وزن زیاد</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-x-4 justify-end">
-                      <a href="" className="flex">
-                        <span>5</span>
-                        <svg
-                          className="hover:fill-green-600"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={20}
-                          height={20}
-                          fill="#797979"
-                          viewBox="0 0 256 256"
-                        >
-                          <path d="M232.49,81.44A22,22,0,0,0,216,74H158V56a38,38,0,0,0-38-38,6,6,0,0,0-5.37,3.32L76.29,98H32a14,14,0,0,0-14,14v88a14,14,0,0,0,14,14H204a22,22,0,0,0,21.83-19.27l12-96A22,22,0,0,0,232.49,81.44ZM30,200V112a2,2,0,0,1,2-2H74v92H32A2,2,0,0,1,30,200ZM225.92,97.24l-12,96A10,10,0,0,1,204,202H86V105.42l37.58-75.17A26,26,0,0,1,146,56V80a6,6,0,0,0,6,6h64a10,10,0,0,1,9.92,11.24Z"></path>
-                        </svg>
-                      </a>
-                      <a href="" className="flex">
-                        <span>1</span>
-                        <svg
-                          className="hover:fill-red-600"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={20}
-                          height={20}
-                          fill="#797979"
-                          viewBox="0 0 256 256"
-                        >
-                          <path d="M237.83,157.27l-12-96A22,22,0,0,0,204,42H32A14,14,0,0,0,18,56v88a14,14,0,0,0,14,14H76.29l38.34,76.68A6,6,0,0,0,120,238a38,38,0,0,0,38-38V182h58a22,22,0,0,0,21.83-24.73ZM74,146H32a2,2,0,0,1-2-2V56a2,2,0,0,1,2-2H74Zm149.5,20.62A9.89,9.89,0,0,1,216,170H152a6,6,0,0,0-6,6v24a26,26,0,0,1-22.42,25.75L86,150.58V54H204a10,10,0,0,1,9.92,8.76l12,96A9.89,9.89,0,0,1,223.5,166.62Z"></path>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="bg-gray-50 p-4 rounded-xl hidden"
-                id="comments"
-                role="tabpanel"
-                aria-labelledby="comments-tab"
-              >
-                <span className="border-b-red-500 border-b">
-                  پرسش های محصول
-                </span>
-                <p className="text-gray-500 text-sm"></p>
-                <div className="flex flex-col py-4 px-4 mx-auto my-6 max-w-7xl rounded-2xl bg-white">
-                  {/* UO COMMENTS */}
-                  <div>
-                    <div>نظرات</div>
-                    <div className="pr-5 opacity-70 text-xs">2نظر</div>
-                  </div>
-                  {/* COMMENT */}
-                  <div className="bg-gray-50 rounded-xl px-5 py-3 my-2">
-                    <div className="flex items-center">
-                      <div>
-                        <img
-                          className="w-10"
-                          src="assets/image/userNotImage.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="text-sm opacity-60 pr-1">
-                        نوشته شده توسط امیررضا کریمی
-                      </div>
-                    </div>
-                    <div className="opacity-60 text-sm py-3">
-                      لورم است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                      سطرآنچنان که لازم است.
-                    </div>
-                    <div>
-                      <button className="mr-auto px-2 sm:px-4 py-2 opacity-80 md:w-auto text-xs sm:text-sm xl:text-base flex justify-center items-center">
-                        پاسخ
-                      </button>
-                    </div>
-                    {/* RESPONSE */}
-                    <div className="bg-gray-100 rounded-xl pl-2 pr-5 sm:pr-8 py-3">
-                      <div className="flex items-center">
-                        <div>
-                          <img
-                            className="w-10"
-                            src="assets/image/userNotImage.png"
-                            alt=""
-                          />
-                        </div>
-                        <div className="text-sm opacity-60 pr-1">
-                          پاسخ داده شده توسط امیررضا کریمی
-                        </div>
-                      </div>
-                      <div className="opacity-60 text-sm py-3">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ و با استفاده از طراحامه و مجله در ستون و سطرآنچنان
-                        که لازم است.
-                      </div>
-                      <div>
-                        <button className="mr-auto px-2 sm:px-4 py-2 opacity-80 md:w-auto text-xs sm:text-sm xl:text-base flex justify-center items-center">
-                          پاسخ
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl px-5 py-3 my-2">
-                    <div className="flex items-center">
-                      <div>
-                        <img
-                          className="w-10"
-                          src="assets/image/userNotImage.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="text-sm opacity-60 pr-1">
-                        نوشته شده توسط امیررضا کریمی
-                      </div>
-                    </div>
-                    <div className="opacity-60 text-sm py-3">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهو است. چاپگرها
-                      و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                      است.
-                    </div>
-                    <div>
-                      <button className="mr-auto px-2 sm:px-4 py-2 opacity-80 md:w-auto text-xs sm:text-sm xl:text-base flex justify-center items-center">
-                        پاسخ
-                      </button>
-                    </div>
-                  </div>
-                  {/* BOX SENT COMMENT */}
-                  <div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="username"
-                        className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-                      >
-                        نام شما:
-                      </label>
-                      <input
-                        type="text"
-                        className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-                      />
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="mailTicket"
-                      className="inline-block mb-2 ml-1 font-semibold text-xs text-slate-700"
-                    >
-                      نظر شما:
-                    </label>
-                    <textarea
-                      cols={30}
-                      rows={5}
-                      className="text-sm block w-full rounded-lg border border-gray-400 bg-white px-3 py-2 font-normal text-gray-700 outline-none focus:border-red-300"
-                      defaultValue={""}
-                    />
-                  </div>
-                  <button className="inline-block px-8 py-2 ml-auto font-semibold text-center text-white bg-red-500 rounded-lg shadow-md text-xs">
-                    ارسال نظر
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
           {/* SLIDER */}
-          <div className="bg-white rounded-2xl pt-10">
-            {/* TOP SLIDER */}
-            <div className="flex justify-between px-5 md:px-10 items-center">
-              <div className="border-b-2 border-red-500 pb-1">
-                مرتبط ترین ها
-              </div>
-              <a href="#">
-                <div className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">
-                  دیدن همه
-                  <img
-                    className="w-4"
-                    src="assets/image/arrow-left.png"
-                    alt=""
-                  />
-                </div>
-              </a>
-            </div>
-            {/* SLIDER */}
-            <div className="containerPSlider swiper">
-              <div className="slide-container1 px-2 swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl swiper-backface-hidden">
-                <div
-                  className="card-wrapper swiper-wrapper py-4"
-                  id="swiper-wrapper-62fe2b9812122344"
-                  aria-live="polite"
-                  style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                >
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3 swiper-slide-active"
-                    role="group"
-                    aria-label="1 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">گوشی شیائومی m11</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3 swiper-slide-next"
-                    role="group"
-                    aria-label="2 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">اپل واچ m32</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3"
-                    role="group"
-                    aria-label="3 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">ریش تراش دایاک</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3"
-                    role="group"
-                    aria-label="4 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/4.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">تلویزیون 40 اینچ سامسونگ</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3"
-                    role="group"
-                    aria-label="5 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/5.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">کاپشن زمستانه</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                  <span
-                    className="card swiper-slide my-2 p-2 md:p-3"
-                    role="group"
-                    aria-label="6 / 6"
-                    style={{ width: "145.667px", marginLeft: 16 }}
-                  >
-                    <div className="image-box mb-6 ">
-                      <a href="">
-                        <img
-                          className="hover:scale-105 transition rounded-3xl w-full mx-auto"
-                          src="assets/image/productSlider/6.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="space-y-3 text-center">
-                      <span className="text-sm opacity-80 mb-2 h-8 md:h-10">
-                        <a href="">هنذفری بلوتوثی شیائومی</a>
-                      </span>
-                      <div className="flex justify-center text-xs opacity-75">
-                        <div className="line-through">1.350.000</div>
-                        <div className="line-through">تومان</div>
-                      </div>
-                      <div className="flex justify-center mt-1 mb-2 text-sm">
-                        <div>1.100.000</div>
-                        <div>تومان</div>
-                      </div>
-                    </div>
-                  </span>
-                </div>
-                <span
-                  className="swiper-notification"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                />
-              </div>
-              <div
-                className="swiper-button-next swiper-navBtn swiper-button-disabled swiper-button-lock"
-                tabIndex={-1}
-                role="button"
-                aria-label="Previous slide"
-                aria-controls="swiper-wrapper-62fe2b9812122344"
-                aria-disabled="true"
-              />
-              <div
-                className="swiper-button-prev swiper-navBtn swiper-button-disabled swiper-button-lock"
-                tabIndex={-1}
-                role="button"
-                aria-label="Next slide"
-                aria-controls="swiper-wrapper-62fe2b9812122344"
-                aria-disabled="true"
-              />
-            </div>
-          </div>
+          <ProductSlider />
         </div>
       </div>
     </div>
