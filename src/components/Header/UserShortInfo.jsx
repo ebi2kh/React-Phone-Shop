@@ -8,14 +8,14 @@ function UserShortInfo() {
         to={""}
         className="flex items-center h-10 leading-10 px-3 mx-1 transition rounded-xl hover:bg-red-50"
       >
-        <img className="ml-1 w-6" src="assets/image/user.png" alt="" />
+        {/* <img className="ml-1 w-6" src="assets/image/user.png" alt="" /> */}
         <span className="text-sm opacity-95">ورود | ثبت نام</span>
         <span>
-          <img
+          {/* <img
             className="w-4 mr-1"
             src="assets/image/chevron-down-login.png"
             alt=""
-          />
+          /> */}
         </span>
       </Link>
       {/* <div className="hidden bg-white rounded-2xl shadow-md border-gray-50 text-sm absolute top-auto right-0 w-64 z-30 mt-1">

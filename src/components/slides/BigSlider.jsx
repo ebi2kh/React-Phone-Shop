@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import product3 from "../../assets/image/productSlider/1.jpg";
 import product4 from "../../assets/image/FeaturedPromos.svg";
 import { Link } from "react-router-dom";
+import box from "../../assets/image/box.webp";
 function BigSlider() {
   const settings = {
     dots: false,
@@ -69,7 +70,7 @@ function BigSlider() {
       <Slider {...settings}>
         {selectedProducts.map((product) => {
           return (
-            <div>
+            <div key={product.id}>
               <div
                 //   href="single-product.html"
                 className="card swiper-slide my-2 p-2 md:p-3 bg-white rounded-xl"
@@ -214,7 +215,7 @@ function BigSlider() {
           style={{ width: "189.294px", marginLeft: 16 }}
         >
           <img src={product4} alt="" />
-          <img className="w-full" src="assets/image/box.webp" alt="" />
+          <img className="w-full" src={box} alt="" />
         </div>
       </Slider>
       {/* </div> */}

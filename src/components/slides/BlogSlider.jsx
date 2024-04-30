@@ -24,7 +24,7 @@ function BlogSlider() {
         <Link to={"/blog"}>
           <div className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">
             مطالب بیشتر
-            <img className="w-4" src="assets/image/arrow-left.png" alt="" />
+            {/* <img className="w-4" src="assets/image/arrow-left.png" alt="" /> */}
           </div>
         </Link>
       </div>
@@ -32,6 +32,7 @@ function BlogSlider() {
         {randomPosts.map((post) => {
           return (
             <Link
+              key={post.id}
               to={`/post/${post.id}`}
               className="shadow-lg rounded-3xl p-4 hover:text-red-600 transition"
             >

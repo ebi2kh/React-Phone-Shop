@@ -12,7 +12,7 @@ function Navbar() {
         <Link className="order-2" to={"/"}>
           <img className="w-14" src={logo} alt="" />
         </Link>
-        <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
+        <div className="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
           <SearchButton />
         </div>
         <div className="order-4 hidden lg:flex">

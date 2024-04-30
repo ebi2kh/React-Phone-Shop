@@ -22,14 +22,13 @@ function ProductSlider() {
         {/* TOP SLIDER */}
       <div className="flex justify-between px-5 md:px-10 items-center">
         <div className="border-b-2 border-red-500 pb-1">جدیدترین محصولات</div>
-        <a href="search.html">
-          <Link
-            to={"/category"}
-            className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600"
-          >
-            دیدن همه
-          </Link>
-        </a>
+
+        <Link
+          to={"/category"}
+          className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600"
+        >
+          دیدن همه
+        </Link>
       </div>
       {/* SLIDER */}
       <div className="containerPSlider swiper">
@@ -44,6 +43,7 @@ function ProductSlider() {
             {selectedProducts.map((post) => {
               return (
                 <Link
+                  key={post.id}
                   to={`/product/${post.id}`}
                   className="card swiper-slide my-2 p-2 md:p-3 swiper-slide-active"
                   role="group"

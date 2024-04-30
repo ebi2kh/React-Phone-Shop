@@ -53,7 +53,7 @@ function OffSlider() {
         <Link to={"/category"}>
           <div className="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">
             دیدن همه
-            <img className="w-4" src="assets/image/arrow-left.png" alt="" />
+            {/* <img className="w-4" src="assets/image/arrow-left.png" alt="" /> */}
           </div>
         </Link>
       </div>
@@ -73,7 +73,7 @@ function OffSlider() {
             <Slider {...settings}>
               {selectedProducts.map((product) => {
                 return (
-                  <div>
+                  <div key={product.id}>
                     <div style={{ width: "795px" }} className="mx-auto">
                       <div className="text-zinc-800 text-lg">
                         {product.name}
