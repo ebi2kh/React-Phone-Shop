@@ -32,6 +32,8 @@ import SlideMain from "./components/slides/SlideMain";
 import NotFound from "./pages/404/NotFound";
 import HomePage from "./pages/homepage/HomePage";
 import Faq from "./pages/faq/Faq";
+import ScrollToTop from "./components/ScrollToTop";
+import ConfirmBuy from "./components/Static/ConfirmBuy";
 export default function App() {
   return (
     <>
@@ -49,6 +51,7 @@ export default function App() {
       {/* <Shop /> */}
 
       <BrowserRouter>
+        <ScrollToTop />
         <CartProvider>
           <BlogContextProvider>
             <ShopProvider>
@@ -58,9 +61,11 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<BlogAll />} />
+                <Route path="/payment" element={<Payment />} />
                 <Route path="/category" element={<Category />} />
                 <Route path="/faq" element={<Faq />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/confirm" element={<ConfirmBuy />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/post/:id" element={<BlogSingle />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
